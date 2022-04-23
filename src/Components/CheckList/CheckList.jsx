@@ -6,7 +6,7 @@ const CheckList = () => {
                     <h1>Match Preparation</h1>
                 </div>
                 <div className="right">
-                    <Link to="/"></Link>
+                    <Link to="/">QR code</Link>
                     <button>Reset</button>
                     <button>Delete</button>
                 </div>
