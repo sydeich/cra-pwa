@@ -1,0 +1,41 @@
+.sidebar {
+    width: fit-content;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 98.4px;
+    background-color: white;
+    border-radius: 0px 10px 10px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .top {
+        margin-bottom: 20px;
+        img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+    .bottom {
+        .picklist {
+            cursor: pointer;
+            background-color: #636363;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 5px;
+            width: 45px;
+            font-size: 15px;
+            height: 45px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            transition: 0.5s;
+            &:hover {
+                background-color: #56E224;
+                transform: scale(1.1);
+                transition: 0.5s;
+            }
+        }
+    }
+}

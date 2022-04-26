@@ -1,0 +1,33 @@
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 20px;
+    display: flex;
+    .left {
+        h1 {
+            margin-right: 20px;
+        }
+        display: flex;
+        .links {
+            display: flex;
+            align-items: center;
+            a {
+                font-weight: bold;
+                text-decoration: none;
+                margin-right: 20px;
+                color: #636363;
+                transition: 0.5s;
+                &.active {
+                    color: black;
+                }
+                &:hover {
+                    color: black;
+                    transition: 0.5s;
+                }
+            }
+        }
+    }
+}

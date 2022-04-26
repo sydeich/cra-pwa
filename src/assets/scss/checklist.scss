@@ -1,0 +1,70 @@
+.checklist {
+    width: 100%;
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 10px;
+    .top {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        .right {
+            a {
+                text-decoration: none;
+            }
+            button {
+                outline: none;
+                border: none;
+            }
+            a,
+            button {
+                background-color: #636363;
+                color: white;
+                padding: 5px 12px;
+                font-size: 16px;
+                font-weight: 500;
+                margin-right: 10px;
+                border-radius: 5px;
+            }
+        }
+    }
+    >.bottom {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        .category {
+            width: 49%;
+            border: 1px solid #B8B8B8;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            .top {
+                h1 {
+                    font-size: 24px;
+                }
+            }
+            .bottom {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+                .property {
+                    width: 49%;
+                    border-radius: 5px;
+                    margin-bottom: 10px;
+                    background-color: #636363;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px 0;
+                    h2 {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
