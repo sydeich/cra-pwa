@@ -51,6 +51,7 @@
                 justify-content: space-between;
                 align-items: center;
                 .property {
+                    cursor: pointer;
                     width: 49%;
                     border-radius: 5px;
                     margin-bottom: 10px;
@@ -60,8 +61,13 @@
                     justify-content: center;
                     align-items: center;
                     padding: 10px 0;
+                    transition: 0.5s;
                     h2 {
                         font-size: 20px;
+                    }
+                    &.active {
+                        background-color: #56E224;
+                        transition: 0.5s;
                     }
                 }
             }
