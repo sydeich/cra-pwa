@@ -1,41 +1,71 @@
-.sidebar {
-    width: fit-content;
-    padding: 20px;
+.sidebar-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     left: 0;
     top: 98.4px;
-    background-color: white;
-    border-radius: 0px 10px 10px 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .top {
-        margin-bottom: 20px;
-        img {
-            width: 25px;
-            height: 25px;
-        }
-    }
-    .bottom {
-        .picklist {
-            cursor: pointer;
-            background-color: #636363;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            padding: 5px;
-            width: 45px;
-            font-size: 15px;
-            height: 45px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            transition: 0.5s;
-            &:hover {
-                background-color: #56E224;
-                transform: scale(1.1);
-                transition: 0.5s;
+    transition: 0.5s;
+    &.active {
+        left: -85px;
+        .side-sidebar {
+            img {
+                transform: rotate(-90deg);
             }
         }
     }
+    .side-sidebar {
+        border-radius: 0px 5px 5px 0px;
+        padding: 40px 1px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            transition: 0.5s;
+            width: 20px;
+            height: 20px;
+            transform: rotate(90deg);
+        }
+    }
+    .sidebar {
+        width: 85px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 0px 10px 10px 0px;
+        background-color: white;
+        .top {
+            margin-bottom: 20px;
+            img {
+                width: 25px;
+                height: 25px;
+                cursor: pointer;
+            }
+        }
+        .bottom {
+            .picklist {
+                cursor: pointer;
+                background-color: #636363;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                padding: 5px;
+                width: 45px;
+                font-size: 15px;
+                height: 45px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+                transition: 0.5s;
+                &:hover {
+                    background-color: #56E224;
+                    transform: scale(1.1);
+                    transition: 0.5s;
+                }
+            }
+        }
+    }
+   
 }
