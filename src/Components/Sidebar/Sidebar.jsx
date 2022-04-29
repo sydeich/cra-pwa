@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import plus from "../../assets/images/plus.svg";
 import arrow from "../../assets/images/arrow.svg";
 import "../../assets/scss/sidebar.scss";
 import NewChecklistPopup from "../Popups/NewChecklistPopup";
+import CircleChecklist from "../CheckList/CircleChecklist";
+import Database from "../../Database";
 
-const Sidebar = () => {
+const Sidebar = ({ database }) => {
     const [isActive, setActive] = useState(false);
+    const [checklists, setChecklists] = useState([]);
     const handleClick = () => {
         setActive(!isActive);
     };
@@ -13,11 +16,27 @@ const Sidebar = () => {
     const handleSidebarClick = () => {
         setSidebarActive(!isSidebarActive);
     };
+    useEffect(() => {
+        const stuff = async () => {
+            try {
+                const checklists = await Database.Checklists.all({
+                    db: database,
+                });
+                setChecklists(checklists);
+            } catch (error) {
+                console.log("The database is not ready yet.");
+            }
+        };
+        stuff();
+    }, [database]);
     return (
         <>
             {isActive ? (
                 <NewChecklistPopup
                     handleClick={handleClick}
+                    database={database}
+                    checklists={checklists}
+                    setChecklists={setChecklists}
                 ></NewChecklistPopup>
             ) : (
                 <></>
@@ -33,21 +52,13 @@ const Sidebar = () => {
                         <img src={plus} alt="" />
                     </div>
                     <div className="bottom">
-                        <div className="picklist">
-                            <h1>A</h1>
-                        </div>
-                        <div className="picklist">
-                            <h1>B</h1>
-                        </div>
-                        <div className="picklist">
-                            <h1>C</h1>
-                        </div>
-                        <div className="picklist">
-                            <h1>D</h1>
-                        </div>
-                        <div className="picklist">
-                            <h1>E</h1>
-                        </div>
+                        {checklists.map((checklist) => {
+                            return (
+                                <CircleChecklist
+                                    title={checklist.title}
+                                ></CircleChecklist>
+                            );
+                        })}
                     </div>
                 </div>
 
