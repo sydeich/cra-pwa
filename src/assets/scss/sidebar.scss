@@ -15,20 +15,25 @@
         }
     }
     .side-sidebar {
+        cursor: pointer;
         border-radius: 0px 5px 5px 0px;
         padding: 40px 1px;
+        &.empty {
+            padding: 30px 1px;
+        }
         background-color: white;
         display: flex;
         justify-content: center;
         align-items: center;
         img {
             transition: 0.5s;
-            width: 20px;
-            height: 20px;
+            width: 19px;
+            height: 19px;
             transform: rotate(90deg);
         }
     }
     .sidebar {
+        box-shadow: rgba(100, 100, 111, 0.2) 29px 7px 29px 0px;
         width: 85px;
         padding: 20px;
         display: flex;
@@ -67,5 +72,4 @@
             }
         }
     }
-   
 }
