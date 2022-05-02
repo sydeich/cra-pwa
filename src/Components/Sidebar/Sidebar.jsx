@@ -7,67 +7,72 @@ import CircleChecklist from "../CheckList/CircleChecklist";
 import Database from "../../Database";
 
 const Sidebar = ({ database }) => {
-    const [isActive, setActive] = useState(false);
-    const [checklists, setChecklists] = useState([]);
-    const handleClick = () => {
-        setActive(!isActive);
-    };
-    const [isSidebarActive, setSidebarActive] = useState(false);
-    const handleSidebarClick = () => {
-        setSidebarActive(!isSidebarActive);
-    };
-    useEffect(() => {
-        const stuff = async () => {
-            try {
-                const checklists = await Database.Checklists.all({
-                    db: database,
-                });
-                setChecklists(checklists);
-            } catch (error) {
-                console.log("The database is not ready yet.");
-            }
-        };
-        stuff();
-    }, [database]);
-    return (
-        <>
-            {isActive ? (
-                <NewChecklistPopup
-                    handleClick={handleClick}
-                    database={database}
-                    checklists={checklists}
-                    setChecklists={setChecklists}
-                ></NewChecklistPopup>
-            ) : (
-                <></>
-            )}
+	const [isActive, setActive] = useState(false);
+	const [checklists, setChecklists] = useState([]);
+	const handleClick = () => {
+		setActive(!isActive);
+	};
+	const [isSidebarActive, setSidebarActive] = useState(false);
+	const handleSidebarClick = () => {
+		setSidebarActive(!isSidebarActive);
+	};
+	useEffect(() => {
+		const stuff = async () => {
+			try {
+				const checklists = await Database.Checklists.all({
+					db: database,
+				});
+				setChecklists(checklists);
+			} catch (error) {
+				console.log("The database is not ready yet.");
+			}
+		};
+		stuff();
+	}, [database]);
+	return (
+		<>
+			{isActive ? (
+				<NewChecklistPopup
+					handleClick={handleClick}
+					database={database}
+					checklists={checklists}
+					setChecklists={setChecklists}
+				></NewChecklistPopup>
+			) : (
+				<></>
+			)}
 
-            <div
-                className={
-                    "sidebar-wrapper" + (isSidebarActive ? " active" : "")
-                }
-            >
-                <div className="sidebar">
-                    <div onClick={handleClick} className="top">
-                        <img src={plus} alt="" />
-                    </div>
-                    <div className="bottom">
-                        {checklists.map((checklist) => {
-                            return (
-                                <CircleChecklist
-                                    title={checklist.title}
-                                ></CircleChecklist>
-                            );
-                        })}
-                    </div>
-                </div>
+			<div
+				className={
+					"sidebar-wrapper" + (isSidebarActive ? " active" : "")
+				}
+			>
+				<div className="sidebar">
+					<div onClick={handleClick} className="top">
+						<img src={plus} alt="" />
+					</div>
+					<div className="bottom">
+						{checklists.map((checklist) => {
+							return (
+								<CircleChecklist
+									title={checklist.title}
+								></CircleChecklist>
+							);
+						})}
+					</div>
+				</div>
 
-                <div onClick={handleSidebarClick} className="side-sidebar">
-                    <img src={arrow} />
-                </div>
-            </div>
-        </>
-    );
+				<div
+					onClick={handleSidebarClick}
+					className={
+						"side-sidebar" + (checklists.length ? "" : " empty")
+					}
+				>
+					<img src={arrow} />
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default Sidebar;
