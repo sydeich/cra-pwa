@@ -69,6 +69,11 @@
                     transform: scale(1.1);
                     transition: 0.5s;
                 }
+                &.active {
+                    background-color: #56E224;
+                    transform: scale(1.1);
+                    transition: 0.5s;
+                }
             }
         }
     }
