@@ -9,6 +9,7 @@ import Database from "./Database";
 
 const App = () => {
     const [database, setDatabase] = useState();
+    const [currentChecklist, setCurrentChecklist] = useState(false);
     useEffect(() => {
         const stuff = async () => {
             const db = await idb.openDB("checkto", 1, {
@@ -31,7 +32,11 @@ const App = () => {
             <BrowserRouter>
                 <Header></Header>
                 <div className="left">
-                    <Sidebar database={database}></Sidebar>
+                    <Sidebar
+                        database={database}
+                        currentChecklist={currentChecklist}
+                        setCurrentChecklist={setCurrentChecklist}
+                    ></Sidebar>
                 </div>
                 <div className="right">
                     <Routes></Routes>
