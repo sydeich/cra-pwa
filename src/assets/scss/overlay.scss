@@ -9,14 +9,24 @@
     backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.7);
     left: calc(-50% + 85px);
+    border: 1px solid #B8B8B8;
+    border-radius: 10px 0 0 10px;
     transition: 0.5s;
+    cursor: pointer;
+    &:hover {
+        box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+    }
     &.active {
+        &:hover {
+            box-shadow: none;
+        }
         left: 0;
         img {
             transform: rotate(90deg);
         }
     }
     &.opposite {
+        border-radius: 0 10px 10px 0;
         left: unset;
         right: calc(-50% + 85px);
         &.active {

@@ -11,6 +11,7 @@ import AboutUs from "./Components/Aboutus/AboutUs";
 const App = () => {
 	const [database, setDatabase] = useState();
 	const [currentChecklist, setCurrentChecklist] = useState(false);
+	const [isSidebarActive, setSidebarActive] = useState(false);
 	useEffect(() => {
 		const stuff = async () => {
 			const db = await idb.openDB("checkto", 1, {
@@ -37,12 +38,19 @@ const App = () => {
 						database={database}
 						currentChecklist={currentChecklist}
 						setCurrentChecklist={setCurrentChecklist}
+						isSidebarActive={isSidebarActive}
+						setSidebarActive={setSidebarActive}
 					></Sidebar>
 				</div>
 				<div className="right">
 					<Routes></Routes>
 				</div>
-				<div className="route">
+				<div
+					className="route"
+					style={{
+						padding: isSidebarActive ? "0 30px" : "0 20px 0 120px",
+					}}
+				>
 					<Routes>
 						<Route path="/" element={<CheckList />} />
 						<Route path="/aboutus" element={<AboutUs />} />
