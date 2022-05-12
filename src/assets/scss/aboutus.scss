@@ -8,6 +8,7 @@
         height: 500px;
         position: relative;
         border-radius: 10px;
+        margin-bottom: 20px;
         overflow: hidden;
         >img {
             width: 100%;
@@ -23,16 +24,31 @@
             top: 0;
             left: 0;
         }
-        .test {
-            width: 100%;
-            height: 100%;
+    }
+    .description {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid #B8B8B8;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .left {
+            width: 60%;
             display: flex;
-            position: absolute;
-            top: 0;
-            left: 0;
-            div {
-                width: 50%;
-                height: 100%;
+            justify-content: center;
+            flex-direction: column;
+            h1 {
+                margin-bottom: 5px;
+            }
+            p {
+                font-weight: bolder;
+                font-size: 18px;
+            }
+        }
+        .right {
+            img {
+                width: 300px;
             }
         }
     }

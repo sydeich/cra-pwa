@@ -22,7 +22,7 @@ const Overlay = ({
 		>
 			<img src={close} onClick={handleClick} />
 			<div>
-				<div></div>
+				<img src={image} alt="" />
 				<h1>{name}</h1>
 				<p>{role}</p>
 			</div>
