@@ -1,6 +1,7 @@
 import Overlay from "./Overlay";
 import aboutus from "../../assets/images/aboutus.png";
 import teamLogo from "../../assets/images/3161.svg";
+import pooria from "../../assets/images/pooria.png";
 import "../../assets/scss/aboutus.scss";
 import { useState } from "react";
 
@@ -44,6 +45,7 @@ const AboutUs = () => {
 						handleClick={handleRightClick}
 						isActive={isRightActive}
 						opposite={true}
+						image={pooria}
 					/>
 				</div>
 			</div>
