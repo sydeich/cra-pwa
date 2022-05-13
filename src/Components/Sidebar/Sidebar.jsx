@@ -12,11 +12,13 @@ const Sidebar = ({
 	setCurrentChecklist,
 	isSidebarActive,
 	setSidebarActive,
+	checklists,
+	setChecklists,
+	isPopupActive,
+	setIsPopupActive,
 }) => {
-	const [isActive, setActive] = useState(false);
-	const [checklists, setChecklists] = useState([]);
 	const handleClick = () => {
-		setActive(!isActive);
+		setIsPopupActive(!isPopupActive);
 	};
 	const handleSidebarClick = () => {
 		setSidebarActive(!isSidebarActive);
@@ -28,6 +30,11 @@ const Sidebar = ({
 					db: database,
 				});
 				setChecklists(checklists);
+				if (checklists.length == 0) {
+					setIsPopupActive(true);
+				} else {
+					setCurrentChecklist(checklists[0].id);
+				}
 			} catch (error) {
 				console.log("The database is not ready yet.");
 			}
@@ -36,7 +43,7 @@ const Sidebar = ({
 	}, [database]);
 	return (
 		<>
-			{isActive ? (
+			{isPopupActive ? (
 				<NewChecklistPopup
 					handleClick={handleClick}
 					database={database}
