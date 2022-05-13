@@ -1,15 +1,15 @@
 class Database {
     static first_time = (db) => {
         const checklists = db.createObjectStore("checklists", {
-            autoIncrement: true
+            autoIncrement: true,
         });
-    }
+    };
     static Checklists = class Checklists {
         static insert = async({ db, title }) => {
             const txn = db.transaction("checklists", "readwrite");
             const checklists = txn.objectStore("checklists");
             return await checklists.add({
-                title
+                title,
             });
         };
         static clear = async({ db }) => {
@@ -29,6 +29,11 @@ class Database {
             const txn = db.transaction("checklists", "readwrite");
             const checklists = txn.objectStore("checklists");
             return await checklists.get(id);
+        };
+        static delete = async({ db, id }) => {
+            const txn = db.transaction("checklists", "readwrite");
+            const checklists = txn.objectStore("checklists");
+            await checklists.delete(id);
         };
     };
 }

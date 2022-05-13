@@ -10,8 +10,11 @@ import AboutUs from "./Components/Aboutus/AboutUs";
 
 const App = () => {
 	const [database, setDatabase] = useState();
-	const [currentChecklist, setCurrentChecklist] = useState(false);
+	const [currentChecklist, setCurrentChecklist] = useState(null);
 	const [isSidebarActive, setSidebarActive] = useState(false);
+	const [checklists, setChecklists] = useState([]);
+	const [isPopupActive, setIsPopupActive] = useState(false);
+
 	useEffect(() => {
 		const stuff = async () => {
 			const db = await idb.openDB("checkto", 1, {
@@ -40,6 +43,10 @@ const App = () => {
 						setCurrentChecklist={setCurrentChecklist}
 						isSidebarActive={isSidebarActive}
 						setSidebarActive={setSidebarActive}
+						checklists={checklists}
+						setChecklists={setChecklists}
+						isPopupActive={isPopupActive}
+						setIsPopupActive={setIsPopupActive}
 					></Sidebar>
 				</div>
 				<div className="right">
@@ -52,7 +59,19 @@ const App = () => {
 					}}
 				>
 					<Routes>
-						<Route path="/" element={<CheckList />} />
+						<Route
+							path="/"
+							element={
+								<CheckList
+									id={currentChecklist}
+									database={database}
+									checklists={checklists}
+									setChecklists={setChecklists}
+									setCurrentChecklist={setCurrentChecklist}
+									setIsPopupActive={setIsPopupActive}
+								/>
+							}
+						/>
 						<Route path="/aboutus" element={<AboutUs />} />
 					</Routes>
 				</div>
