@@ -19,7 +19,11 @@ const App = () => {
 		const stuff = async () => {
 			const db = await idb.openDB("checkto", 1, {
 				async upgrade(db, oldVersion, newVersion, transaction) {
-					const objectStores = ["checklists"];
+					const objectStores = [
+						"checklists",
+						"categories",
+						"properties",
+					];
 					for (let i = 0; i < objectStores.length; i++) {
 						try {
 							await db.deleteObjectStore(objectStores[i]);
