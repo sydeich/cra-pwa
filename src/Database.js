@@ -13,7 +13,7 @@ class Database {
     static Properties = class Properties {
         static insert = async({ db, category, title }) => {
             const txn = db.transaction("properties", "readwrite");
-            const properties = txm.objectStore("properties");
+            const properties = txn.objectStore("properties");
             return await properties.add({
                 category,
                 title,
@@ -42,7 +42,7 @@ class Database {
     static Categories = class Catgories {
         static insert = async({ db, title, checklist }) => {
             const txn = db.transaction("categories", "readwrite");
-            const categories = txm.objectStore("categories");
+            const categories = txn.objectStore("categories");
             return await categories.add({
                 checklist,
                 title,
