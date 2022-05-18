@@ -16,4 +16,5 @@ body {
 .route {
     width: 100%;
     transition: 0.5s;
+    min-height: calc(100vh - 78.4px * 2 - 70px);
 }
