@@ -18,7 +18,7 @@ const App = () => {
 
 	useEffect(() => {
 		const stuff = async () => {
-			const db = await idb.openDB("checkto", 1, {
+			const db = await idb.openDB("checkto", 2, {
 				async upgrade(db, oldVersion, newVersion, transaction) {
 					const objectStores = [
 						"checklists",
