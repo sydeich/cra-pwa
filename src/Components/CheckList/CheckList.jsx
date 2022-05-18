@@ -3,6 +3,8 @@ import "../../assets/scss/checklist.scss";
 import Category from "../Categories/Category";
 import Database from "../../Database";
 import { useState, useEffect } from "react";
+import plusSign from "../../assets/images/plus.svg";
+import NewCategoryPopup from "../Popups/NewCategoryPopup";
 
 const CheckList = ({
 	id,
@@ -12,6 +14,8 @@ const CheckList = ({
 	setIsPopupActive,
 }) => {
 	const [data, setData] = useState(null);
+	const [isCategoryPopActive, setIsCategoryPopActive] = useState(false);
+	const [categories, setCategories] = useState([]);
 	useEffect(() => {
 		const stuff = async () => {
 			try {
@@ -29,10 +33,18 @@ const CheckList = ({
 	}, [database, id]);
 
 	const handleClick = async () => {
+		const isOk = window.confirm(
+			`Are you sure you wanna delete "${data.title}?"`
+		);
+		if (!isOk) return;
 		await Database.Checklists.delete({ db: database, id: id });
 		const checklists = await Database.Checklists.all({ db: database });
 		setChecklists(checklists);
-		setCurrentChecklist(null);
+		if (checklists.length) {
+			setCurrentChecklist(checklists[0].id);
+		} else {
+			setCurrentChecklist(null);
+		}
 		setData(null);
 		setIsPopupActive(checklists.length ? false : true);
 	};
@@ -40,9 +52,21 @@ const CheckList = ({
 	if (data == null) {
 		return <></>;
 	}
+	const togglePopup = () => {
+		setIsCategoryPopActive(!isCategoryPopActive);
+	};
 
 	return (
 		<div className="checklist">
+			{isCategoryPopActive && (
+				<NewCategoryPopup
+					categories={categories}
+					setCategories={setCategories}
+					checklistId={id}
+					database={database}
+					handleClick={togglePopup}
+				></NewCategoryPopup>
+			)}
 			<div className="top">
 				<div className="left">
 					<h1>{data.title}</h1>
@@ -61,6 +85,9 @@ const CheckList = ({
 			<div className="bottom">
 				<Category title="Auto"></Category>
 				<Category title="Teleop"></Category>
+				<div className="new-category" onClick={togglePopup}>
+					<img src={plusSign} alt="" />
+				</div>
 			</div>
 		</div>
 	);
