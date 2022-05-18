@@ -7,7 +7,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(99,99,99,0.4);
+    background-color: rgba(99, 99, 99, 0.4);
     backdrop-filter: blur(2px);
     z-index: 100;
     .new-checklist {
@@ -30,11 +30,10 @@
                 transform: rotate(45deg);
                 cursor: pointer;
             }
-           
         }
         .bottom {
             display: flex;
-            > * {
+            >* {
                 width: 100%;
             }
             >input[type="text"] {
@@ -54,6 +53,7 @@
                 color: white;
                 font-size: 25px;
                 font-weight: bold;
+                cursor: pointer;
             }
             flex-direction: column;
         }
