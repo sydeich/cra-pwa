@@ -25,6 +25,10 @@ const CheckList = ({
 					id,
 				});
 				setData(data);
+				const categories = (
+					await Database.Categories.all({ db: database })
+				).filter((item) => item.checklist === id);
+				setCategories(categories);
 			} catch (error) {
 				console.log("Database is not ready.");
 			}
@@ -83,8 +87,15 @@ const CheckList = ({
 				</div>
 			</div>
 			<div className="bottom">
-				<Category title="Auto"></Category>
-				<Category title="Teleop"></Category>
+				{categories.map((category) => (
+					<Category
+						key={category.id}
+						{...category}
+						database={database}
+						categories={categories}
+						setCategories={setCategories}
+					/>
+				))}
 				<div className="new-category" onClick={togglePopup}>
 					<img src={plusSign} alt="" />
 				</div>

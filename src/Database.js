@@ -20,6 +20,18 @@ class Database {
                 active: false,
             });
         };
+        static getById = async({ db, id }) => {
+            const txn = db.transaction("properties", "readwrite");
+            const properties = txn.objectStore("properties");
+            return await properties.get(id);
+        };
+        static update = async({ db, id, newData }) => {
+            let data = await Database.Properties.getById({ db, id });
+            data = {...data, ...newData };
+            const txn = db.transaction("properties", "readwrite");
+            const properties = txn.objectStore("properties");
+            properties.put(data, id);
+        };
         static clear = async({ db }) => {
             const txn = db.transaction("properties", "readwrite");
             const properties = txn.objectStore("properties");
