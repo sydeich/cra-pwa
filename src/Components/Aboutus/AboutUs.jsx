@@ -2,6 +2,7 @@ import Overlay from "./Overlay";
 import aboutus from "../../assets/images/aboutus.png";
 import teamLogo from "../../assets/images/3161.svg";
 import pooria from "../../assets/images/pooria.png";
+import sydney from "../../assets/images/sydney.jpeg";
 import "../../assets/scss/aboutus.scss";
 import { useState } from "react";
 
@@ -34,6 +35,7 @@ const AboutUs = () => {
 						phone=""
 						handleClick={handleLeftClick}
 						isActive={isLeftActive}
+						image={sydney}
 					/>
 					<Overlay
 						email="gmail@gmail.com"

@@ -7,6 +7,7 @@ import Sidebar from "./Components/Sidebar/Sidebar";
 import CheckList from "./Components/CheckList/CheckList";
 import Database from "./Database";
 import AboutUs from "./Components/Aboutus/AboutUs";
+import Footer from "./Components/Footer/Footer";
 
 const App = () => {
 	const [database, setDatabase] = useState();
@@ -17,9 +18,13 @@ const App = () => {
 
 	useEffect(() => {
 		const stuff = async () => {
-			const db = await idb.openDB("checkto", 1, {
+			const db = await idb.openDB("checkto", 2, {
 				async upgrade(db, oldVersion, newVersion, transaction) {
-					const objectStores = ["checklists"];
+					const objectStores = [
+						"checklists",
+						"categories",
+						"properties",
+					];
 					for (let i = 0; i < objectStores.length; i++) {
 						try {
 							await db.deleteObjectStore(objectStores[i]);
@@ -75,6 +80,7 @@ const App = () => {
 						<Route path="/aboutus" element={<AboutUs />} />
 					</Routes>
 				</div>
+				<Footer />
 			</BrowserRouter>
 		</div>
 	);

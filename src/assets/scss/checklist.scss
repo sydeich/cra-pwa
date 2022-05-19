@@ -16,6 +16,7 @@
             button {
                 outline: none;
                 border: none;
+                cursor: pointer;
             }
             a,
             button {
@@ -33,7 +34,17 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        align-items: center;
+        .new-category {
+            cursor: pointer;
+            border-radius: 10px;
+            width: 100px;
+            height: 100px;
+            padding: 20px;
+            border: 1px solid #B8B8B8;
+            img {
+                width: 100%;
+            }
+        }
         .category {
             width: 49%;
             border: 1px solid #B8B8B8;
@@ -43,6 +54,17 @@
             .top {
                 h1 {
                     font-size: 24px;
+                }
+                button {
+                    background-color: rgb(209, 26, 42);
+                    color: white;
+                    padding: 5px 12px;
+                    font-size: 16px;
+                    font-weight: 500;
+                    border-radius: 5px;
+                    outline: none;
+                    border: none;
+                    cursor: pointer;
                 }
             }
             .bottom {
@@ -67,6 +89,30 @@
                     }
                     &.active {
                         background-color: #56E224;
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
+                        transition: 0.5s;
+                    }
+                    &.delete {
+                        background-color: rgb(209, 26, 42);
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px 10px;
+                        img {
+                            height: 25px;
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+                .new-property {
+                    background-color: transparent;
+                    color: black;
+                    border: 1px solid #B8B8B8;
+                    transition: 0.5s;
+                    &:hover {
+                        background-color: #56E224;
+                        color: white;
                         transition: 0.5s;
                     }
                 }

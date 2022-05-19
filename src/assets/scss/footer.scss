@@ -1,0 +1,34 @@
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    margin-top: 50px;
+    padding: 20px;
+    .left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        >h1 {
+            margin-right: 20px;
+        }
+        >p {
+            font-weight: bold;
+            >a {
+                text-decoration: underline;
+                color: #007AFF;
+            }
+        }
+    }
+    .right {
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #636363;
+            padding: 10px 15px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+    }
+}
