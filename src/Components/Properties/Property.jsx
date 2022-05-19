@@ -11,13 +11,14 @@ const Property = ({
 	setProperties,
 	reset,
 }) => {
-	const [state, setState] = useState(0);
+	const [state, setState] = useState(active ? 1 : 0);
 	const onClick = async () => {
+		console.log(state === 0 ? true : false);
 		await Database.Properties.update({
 			db: database,
 			id: id,
 			newData: {
-				active: state === 0 ? 1 : 0,
+				active: state === 0 ? true : false,
 			},
 		});
 		setState(state === 0 ? 1 : 0);
@@ -39,7 +40,7 @@ const Property = ({
 				db: database,
 				id,
 			});
-			setState(data.active);
+			setState(data.active ? 1 : 0);
 			return;
 		}
 		setState(2);
