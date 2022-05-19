@@ -16,6 +16,7 @@ const CheckList = ({
 	const [data, setData] = useState(null);
 	const [isCategoryPopActive, setIsCategoryPopActive] = useState(false);
 	const [categories, setCategories] = useState([]);
+	const [reset, setReset] = useState(false);
 	useEffect(() => {
 		const stuff = async () => {
 			try {
@@ -59,6 +60,13 @@ const CheckList = ({
 	const togglePopup = () => {
 		setIsCategoryPopActive(!isCategoryPopActive);
 	};
+	const resetProperties = async () => {
+		const isOk = window.confirm(
+			`Are you sure? this will uncheck everything within the checklist`
+		);
+		if (!isOk) return;
+		setReset(!reset);
+	};
 
 	return (
 		<div className="checklist">
@@ -77,7 +85,7 @@ const CheckList = ({
 				</div>
 				<div className="right">
 					<Link to="/">QR code</Link>
-					<button>Reset</button>
+					<button onClick={resetProperties}>Reset</button>
 					<button
 						style={{ backgroundColor: "#D11A2A", marginRight: 0 }}
 						onClick={handleClick}
@@ -94,6 +102,7 @@ const CheckList = ({
 						database={database}
 						categories={categories}
 						setCategories={setCategories}
+						reset={reset}
 					/>
 				))}
 				<div className="new-category" onClick={togglePopup}>

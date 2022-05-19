@@ -10,6 +10,7 @@ const Category = ({
 	database,
 	setCategories,
 	categories,
+	reset,
 }) => {
 	const [isPopupActive, setIsPopupActive] = useState(false);
 	const [properties, setProperties] = useState([]);
@@ -61,6 +62,9 @@ const Category = ({
 						{...property}
 						key={property.id}
 						database={database}
+						properties={properties}
+						setProperties={setProperties}
+						reset={reset}
 					/>
 				))}
 				<div className="property new-property" onClick={togglePopup}>
