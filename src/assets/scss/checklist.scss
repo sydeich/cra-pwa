@@ -89,7 +89,20 @@
                     }
                     &.active {
                         background-color: #56E224;
+                        text-decoration: line-through;
+                        text-decoration-thickness: 3px;
                         transition: 0.5s;
+                    }
+                    &.delete {
+                        background-color: rgb(209, 26, 42);
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px 10px;
+                        img {
+                            height: 25px;
+                            transform: rotate(45deg);
+                        }
                     }
                 }
                 .new-property {
